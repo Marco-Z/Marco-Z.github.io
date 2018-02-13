@@ -1,0 +1,42 @@
+#sudoku{
+	border-collapse: collapse;
+}
+#sudoku td{
+	border: 1px solid black;
+	height: 2em;
+	width: 2em;
+	font-size: 2em;
+	font-family: sans-serif;
+    text-align: center;
+    line-height: 2em;
+    overflow: hidden;
+}
+#sudoku tr:nth-child(3n){
+	border-bottom: 3px solid black;
+}
+#sudoku tr:first-child{
+	border-top: 3px solid black;	
+}
+#sudoku td:nth-child(3n){
+	border-right: 3px solid black;
+}
+#sudoku td:first-child{
+	border-left: 3px solid black;	
+}
+.grey{
+	color: gray;
+}
+td>input{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border: none;
+    outline: none;
+	text-align: center;
+	font-size: 2rem;
+}
+td>input:disabled{
+	background-color: white;
+	color: gray;
+}

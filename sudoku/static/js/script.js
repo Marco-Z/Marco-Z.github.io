@@ -11,7 +11,7 @@ let init = () => {
     messageType: "SETTING",
     options: {
       "width": 600,
-      "height": 643
+      "height": 670
       }
   }, "*");
   let sudoku = document.getElementById('sudoku');

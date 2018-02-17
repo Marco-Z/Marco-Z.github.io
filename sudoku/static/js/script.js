@@ -11,7 +11,7 @@ let init = () => {
     messageType: "SETTING",
     options: {
       "width": 600,
-      "height": 670
+      "height": 700
       }
   }, "*");
   let sudoku = document.getElementById('sudoku');
@@ -45,7 +45,7 @@ let init = () => {
   grill.forEach(x => {
     let el = document.querySelector('.r'+x[0]+'.c'+x[1]);
     board[x[0]-1][x[1]-1] = x[2];
-    el.innerHTML = '<input type="text" value="'+x[2]+'" disabled>';
+    el.innerHTML = '<input type="number" value="'+x[2]+'" disabled>';
     el.className = el.className+' grey';
   });
 }
@@ -54,10 +54,11 @@ Array.prototype.check = function(r1,r2,c1,c2){
   let s = new Set();
   for(let i=r1;i<r2;i++) {
     for(let j=c1;j<c2;j++) {
-      s.add(this[i][j]);
+      s.add(parseInt(this[i][j]));
     }
   }
-  return s.size == 9? true : false;
+  s.delete(0);
+  return s.size == 9;
 }
 
 function getBoard() {
@@ -167,6 +168,27 @@ function message(evt) {
   }
 }
 
+function showWin() {
+  let inputs = Array.prototype.slice.call(document.querySelectorAll('#sudoku input'));
+  inputs.map(i => {
+    i.remove();
+  })
+  let message = ' YOU WIN ';
+  let i = 1;
+  function animate() {
+    let l = message[0];
+    if(message){
+      message = message.slice(1);
+      let c = '.r5.c';
+      let square = document.querySelector(c+i);
+      square.className = c+i;
+      square.innerHTML = l;
+      i++;
+      setTimeout(animate, 200);
+    }
+  };
+  animate();
+}
 //LISTENERS
 document.getElementById("save").addEventListener("click", save);
 document.getElementById("load").addEventListener("click", load);
@@ -178,6 +200,7 @@ document.getElementById("sudoku").addEventListener("change", function (e) {
   board[r][c] = e.target.value;
   if(done()){
     score();
+    setTimeout(showWin, 200);
   }
 });
 

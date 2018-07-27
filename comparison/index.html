@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>comparison</title>
+	<link rel="stylesheet" type="text/css" href="static/css/styles.css">
+</head>
+<body>
+
+	<div class="vl"></div>
+
+	<div id="fileLoaderContainer">
+		<label id="fileLoader" for="file">
+			Choose File...
+			<input id="file" type='file' accept='.json' onchange='openFile(event)' multiple>
+		</label>
+	</div>
+
+    <timelines></timelines>
+    <div id='output'></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="static/js/script.js"></script>
+	<script type="text/javascript" src="static/js/timeline.js"></script>
+</body>
+</html>

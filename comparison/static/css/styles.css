@@ -1,0 +1,58 @@
+
+.leg{
+    height: 4rem;
+    position: absolute;
+    background: palevioletred;
+}
+.timeline{
+    height: 5rem;
+    margin-top: 1rem;
+}
+.timeline p{
+    margin: 0;
+}
+#fileLoaderContainer{
+    box-sizing: border-box;
+    height: 5rem;
+}
+#fileLoader{
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 5rem;
+    width: 15rem;
+    background-color: white;
+    border: 1px dashed gray;
+    position: absolute;
+    line-height: 5rem;
+    text-align: center;
+}
+#fileLoader input{
+    cursor: pointer;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    line-height: 5rem;
+}
+.vl {
+    border-left: 1px dashed black;
+    height: 100vh;
+    position: fixed;
+    left: -1px;
+    top: 0;
+}
+.delButton{
+    z-index: 10;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: indianred;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.timeline:hover .delButton{
+    visibility: visible;
+}

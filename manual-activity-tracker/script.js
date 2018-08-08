@@ -42,7 +42,7 @@ function list() {
         if (localStorage.hasOwnProperty(timestamp)) {
             const element = localStorage[timestamp];
             var info = document.createElement("span");
-            info.innerText = new Date(parseInt(timestamp)).toLocaleString() + ": " + element;
+            info.innerHTML = "<span class='timestamp'>" + new Date(parseInt(timestamp)).toLocaleString() + "</span>: <span class='activity'>" + element + "</span>";
             var d = document.createElement("span");
             d.innerText = "x";
             d.className = "del";
@@ -84,14 +84,36 @@ function download() {
     }
 }
 
+function change_time(event) {
+    if(event.target.className === "timestamp"){
+        var leg = event.target.parentElement.parentElement;
+        event.target.innerHTML = '<span id="changets"><input type="datetime" name="ts" id="ts"><button id="confirm_time">✓</button></span>';
+        
+        var ts = leg.querySelector("#ts");
+        ts.value = new Date(parseInt(leg.id)).toLocaleString();
+        leg.querySelector("#confirm_time").addEventListener("click", function(event){
+            var leg = event.target.parentElement.parentElement.parentElement.parentElement;
+            var dt = leg.querySelector("#ts");
+            var new_dt = dt.value;
+            var new_ts = new Date(new_dt).getTime();            
+            
+            leg.querySelector(".timestamp").innerHTML = new_dt;
+            localStorage.removeItem(leg.id);
+            localStorage.setItem(new_ts, leg.querySelector(".activity").innerText);
+            leg.id = new_ts;
+        })
+    }
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    console.log("loaded");
-    
+
+document.addEventListener('DOMContentLoaded', function () {    
     document.querySelectorAll('#activities button').forEach(b => {
         b.addEventListener('click', record);
     });
     document.querySelector('#clear').addEventListener('click', clear_ls);
     document.querySelector('#save').addEventListener('click', download);
     list();
+
+    document.querySelector('#timeline').addEventListener('click', change_time);
+
 });

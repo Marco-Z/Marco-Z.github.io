@@ -1,91 +1,94 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    #activities button,
-    #funcs button {
-        font-size: 1.2rem;
-        padding: .5rem;
-        width: 45vw;
-        margin: .2rem;
-        border: none;
-        border-radius: 2rem;
-        text-shadow: -0.5px -0.5px 0 #000,
-        0.5px -0.5px 0 #000,
-        -0.5px 0.5px 0 #000,
-        0.5px 0.5px 0 #000;
-        color: white;
-    }
+#activities button,
+#funcs button {
+    font-size: 1.2rem;
+    padding: .5rem;
+    width: 45vw;
+    margin: .2rem;
+    border: none;
+    border-radius: 2rem;
+    text-shadow: -0.5px -0.5px 0 #000,
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;
+    color: white;
+}
 
-    body>div {
-        margin-bottom: 1rem;
-    }
+body>div {
+    margin-bottom: 1rem;
+}
 
-    .del {
-        display: inline-block;
-        text-align: center;
-        line-height: 1.5rem;
-        border-radius: 50%;
-        background-color: red;
-        color: white;
-        width: 1.5rem;
-        height: 1.5rem;
-        margin: 0.2rem;
-    }
+.del {
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5rem;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.2rem;
+}
 
-    .unknown {
-        background-color: rgb(204, 204, 204)
-    }
+.unknown {
+    background-color: rgb(204, 204, 204)
+}
 
-    .stationary {
-        background-color: rgb(170, 170, 170)
-    }
+.stationary {
+    background-color: rgb(170, 170, 170)
+}
 
-    .non-motorized {
-        background-color: rgb(233, 94, 40)
-    }
+.non-motorized {
+    background-color: rgb(233, 94, 40)
+}
 
-    .bicycle {
-        background-color: rgb(245, 153, 30)
-    }
+.bicycle {
+    background-color: rgb(245, 153, 30)
+}
 
-    .pedestrian {
-        background-color: rgb(210, 104, 26)
-    }
+.pedestrian {
+    background-color: rgb(210, 104, 26)
+}
 
-    .run {
-        background-color: rgb(245, 30, 39)
-    }
+.run {
+    background-color: rgb(245, 30, 39)
+}
 
-    .walk {
-        background-color: rgb(210, 50, 26)
-    }
+.walk {
+    background-color: rgb(210, 50, 26)
+}
 
-    .motorized {
-        background-color: rgb(38, 174, 147)
-    }
+.motorized {
+    background-color: rgb(38, 174, 147)
+}
 
-    .rail {
-        background-color: rgb(42, 192, 103)
-    }
+.rail {
+    background-color: rgb(42, 192, 103)
+}
 
-    .metro {
-        background-color: rgb(0, 138, 56)
-    }
+.metro {
+    background-color: rgb(0, 138, 56)
+}
 
-    .tram {
-        background-color: rgb(75, 206, 128)
-    }
+.tram {
+    background-color: rgb(75, 206, 128)
+}
 
-    .train {
-        background-color: rgb(3, 183, 76)
-    }
+.train {
+    background-color: rgb(3, 183, 76)
+}
 
-    .road {
-        background-color: rgb(44, 133, 172)
-    }
+.road {
+    background-color: rgb(44, 133, 172)
+}
 
-    .bus {
-        background-color: rgb(75, 155, 190)
-    }
+.bus {
+    background-color: rgb(75, 155, 190)
+}
 
-    .car {
-        background-color: rgb(5, 86, 121)
+.car {
+    background-color: rgb(5, 86, 121)
 }

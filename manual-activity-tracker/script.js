@@ -87,18 +87,29 @@ function download() {
 function change_time(event) {
     if(event.target.className === "timestamp"){
         var leg = event.target.parentElement.parentElement;
-        event.target.innerHTML = '<span id="changets"><input type="datetime" name="ts" id="ts"><button id="confirm_time">✓</button></span>';
+        var datetime = new Date(parseInt(leg.id));
         
-        var ts = leg.querySelector("#ts");
-        ts.value = new Date(parseInt(leg.id)).toLocaleString();
-        leg.querySelector("#confirm_time").addEventListener("click", function(event){
-            var leg = event.target.parentElement.parentElement.parentElement.parentElement;
-            var dt = leg.querySelector("#ts");
-            var new_dt = dt.value;
-            var new_ts = new Date(new_dt).getTime();            
-            
-            leg.querySelector(".timestamp").innerHTML = new_dt;
-            localStorage.removeItem(leg.id);
+        var tPicker = timePickerModal({
+            element: leg,
+            mode: 12,
+            time: {
+                hour: datetime.getHours(),
+                minute: datetime.getMinutes(),
+            }
+        });
+        
+
+        tPicker.onOk(function(h, m) {
+            var old_ts = datetime.getTime();
+
+            datetime.setHours(h);
+            datetime.setMinutes(m);
+
+            var leg = event.target.parentElement.parentElement;
+            var new_ts = datetime.getTime();            
+
+            leg.querySelector(".timestamp").innerHTML = datetime.toLocaleString();
+            localStorage.removeItem(old_ts);
             localStorage.setItem(new_ts, leg.querySelector(".activity").innerText);
             leg.id = new_ts;
         })

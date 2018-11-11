@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    padding: 0;
+}
 
 .leg{
     height: 4rem;
@@ -43,6 +47,15 @@
     left: -1px;
     top: 0;
 }
+.dragArea {
+    border-right: 1px dashed blue;
+    border-left: 1px dashed blue;
+    background-color: aqua;
+    height: 100vh;
+    position: fixed;
+    left: -1px;
+    top: 0;
+}
 .delButton{
     z-index: 10;
     border-radius: 50%;
@@ -55,4 +68,7 @@
 
 .timeline:hover .delButton{
     visibility: visible;
+}
+.right{
+    float: right;
 }

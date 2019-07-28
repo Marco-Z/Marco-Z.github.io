@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/quadrolingo/static/css/main.28adf825.chunk.css",
+    "main.js": "/quadrolingo/static/js/main.948cefb7.chunk.js",
+    "main.js.map": "/quadrolingo/static/js/main.948cefb7.chunk.js.map",
+    "runtime~main.js": "/quadrolingo/static/js/runtime~main.3e706d02.js",
+    "runtime~main.js.map": "/quadrolingo/static/js/runtime~main.3e706d02.js.map",
+    "static/js/2.b10d7efa.chunk.js": "/quadrolingo/static/js/2.b10d7efa.chunk.js",
+    "static/js/2.b10d7efa.chunk.js.map": "/quadrolingo/static/js/2.b10d7efa.chunk.js.map",
+    "index.html": "/quadrolingo/index.html",
+    "precache-manifest.b22c3a4d06d069e701540e6108e4a03e.js": "/quadrolingo/precache-manifest.b22c3a4d06d069e701540e6108e4a03e.js",
+    "service-worker.js": "/quadrolingo/service-worker.js",
+    "static/css/main.28adf825.chunk.css.map": "/quadrolingo/static/css/main.28adf825.chunk.css.map"
+  }
+}

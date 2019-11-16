@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/quadrolingo/precache-manifest.b22c3a4d06d069e701540e6108e4a03e.js"
+  "/quadrolingo/precache-manifest.80125a76a56d57b570eeb13802e530fa.js"
 );
 
 self.addEventListener('message', (event) => {

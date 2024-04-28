@@ -72,17 +72,19 @@ const update = (target, op) => {
 
 const step = (target) => {
     const start = Date.now()
-    target.onmouseup = () => {
+    target.onmouseup = (e) => {
+        e.preventDefault()
         const end = Date.now()
         const op = end-start < 400 ? "+" : "-"
         update(target, op)
         saveData()
     }
+    target.ontouchend = target.onmouseup
 }
 
 const createStepper = (treeClassName, treeCount) => {
     return `
-    <button class="stepper" onmousedown="step(this)" id=${treeClassName}>
+    <button class="stepper" ontouchstart="step(this)" id=${treeClassName}>
         <div class="class">${treeClassName}</div>
         <div class="count">${treeCount}</div>
     </button>`

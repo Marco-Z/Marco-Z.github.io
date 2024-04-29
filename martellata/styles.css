@@ -12,8 +12,12 @@
     margin: 5px;
     vertical-align: middle;
 }
+#note {
+    grid-column: span 2;
+}
 
-#zone-creation-form input {
+#zone-creation-form input,
+#note {
     width: 100%;
     height: 100%;
     padding: 0px;
@@ -23,12 +27,14 @@
     font-size: 16px;
 }
 
-#zone-creation-form input:focus {
+#zone-creation-form input:focus,
+#note:focus {
     border-bottom: 2px solid green;
 }
 
 #utils > button {
-    width: 100%;
+    width: fit-content;
+    background-color: transparent;
     margin: 5px;
     padding: 0px;
     border: none;

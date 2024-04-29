@@ -150,9 +150,17 @@ const onZoneConfirm = (e) => {
     saveData()
 }
 
+const getNotes = () => {
+    return document.getElementById("note").value
+}
+
 const exportData = () => {
     filename=`martellata_${new Date().toLocaleDateString("it")}.xlsx`
     const wb = XLSX.utils.book_new()
+
+    const notesSheet = XLSX.utils.json_to_sheet([{note: getNotes()}])
+    XLSX.utils.book_append_sheet(wb, notesSheet, "note")
+
     for (zone in state.treeCountsByZone) {
         treeCountByClass = {}
         for (tree in state.treeCountsByZone[zone]) {

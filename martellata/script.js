@@ -8,16 +8,16 @@ const TREES = [
     "Latifoglie",
 ]
 
-const zones = [
+const INITIAL_ZONES = [
     "particella"
 ]
 
 var state = {
-    zones,
-    trees: TREES,
+    zones: [...INITIAL_ZONES],
+    trees: [...TREES],
     treeCountsByZone: {},
     selectedTree: TREES[0],
-    selectedZone: zones[0]
+    selectedZone: INITIAL_ZONES[0]
 }
 
 const getEmptyCounts = (classes) => 
@@ -54,11 +54,25 @@ const loadData = () => {
         state = JSON.parse(savedState)
         return
     }
-    for (const zone of zones) {
+    for (const zone of state.zones) {
         initTreeCounts(zone, TREES)
     }
 }
 
+const resetData = () => {
+    state = {
+        zones: [...INITIAL_ZONES],
+        trees: [...TREES],
+        treeCountsByZone: {},
+        selectedTree: TREES[0],
+        selectedZone: INITIAL_ZONES[0]
+    }
+    for (const zone of state.zones) {
+        initTreeCounts(zone, TREES)
+    }
+    renderZoneSelection(state.zones)
+    renderTreeSelection(state.trees)
+}
 
 const update = (target, op) => {
     const sign = op === "+" ? 1 : -1
@@ -72,14 +86,14 @@ const update = (target, op) => {
 
 const step = (target) => {
     const start = Date.now()
-    target.onmouseup = (e) => {
+    target.ontouchend = (e) => {
         e.preventDefault()
         const end = Date.now()
         const op = end-start < 400 ? "+" : "-"
         update(target, op)
         saveData()
     }
-    target.ontouchend = target.onmouseup
+    target.onmouseup = target.ontouchend
 }
 
 const createStepper = (treeClassName, treeCount) => {
@@ -181,6 +195,7 @@ const exportData = () => {
 }
 
 loadData()
+resetData()
 renderZoneSelection(state.zones)
 renderTreeSelection(state.trees)
 renderCounters(state.selectedTree)

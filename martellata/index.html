@@ -9,12 +9,13 @@
 </head>
 <body>
     <div id="screen">
-        <section id="utils" class="grid col-2">
+        <section id="utils" class="grid col-3">
             <textarea id="note" placeholder="note"></textarea>
             <form id="zone-creation-form" onsubmit="onZoneConfirm(event)">
                 <input type="text" placeholder="aggiungi/rimuovi particella"></input>
             </form>
             <button onclick="exportData()">⬇️</button>
+            <button onclick="resetData()">❌</button>
         </section>
         <section id="zone-selection">
             <form id="zone-selection-form" class="grid col-4"></form>

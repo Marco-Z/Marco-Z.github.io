@@ -1,11 +1,6 @@
 const CLASS_COUNT = 13
 const TREES = [
-    "Abete Rosso",
-    "Abete Bianco",
-    "Pini",
-    "Pino Cembro",
-    "Larice",
-    "Latifoglie",
+    "AR", "L", "PC", "PS", "AB"
 ]
 
 const INITIAL_ZONES = [

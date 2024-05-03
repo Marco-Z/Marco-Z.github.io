@@ -154,6 +154,9 @@ const onZoneConfirm = (e) => {
     if (!state.zones.includes(newZone)) {
         state.zones.push(newZone)
         initTreeCounts(newZone, TREES)
+        if (!state.selectedZone) {
+            state.selectedZone = state.zones[0] || null
+        }
     } else {
         state.zones = state.zones.filter(zone => newZone !== zone)
         delete state.treeCountsByZone[newZone]

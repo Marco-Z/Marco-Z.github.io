@@ -190,7 +190,6 @@ const exportData = () => {
 }
 
 loadData()
-resetData()
 renderZoneSelection(state.zones)
 renderTreeSelection(state.trees)
 renderCounters(state.selectedTree)

@@ -3,16 +3,12 @@ const TREES = [
     "AR", "L", "PC", "PS", "AB"
 ]
 
-const INITIAL_ZONES = [
-    "particella"
-]
-
 var state = {
-    zones: [...INITIAL_ZONES],
+    zones: [],
     trees: [...TREES],
     treeCountsByZone: {},
     selectedTree: TREES[0],
-    selectedZone: INITIAL_ZONES[0]
+    selectedZone: null
 }
 
 const getEmptyCounts = (classes) => 
@@ -56,17 +52,16 @@ const loadData = () => {
 
 const resetData = () => {
     state = {
-        zones: [...INITIAL_ZONES],
+        zones: [],
         trees: [...TREES],
         treeCountsByZone: {},
         selectedTree: TREES[0],
-        selectedZone: INITIAL_ZONES[0]
+        selectedZone: null
     }
-    for (const zone of state.zones) {
-        initTreeCounts(zone, TREES)
-    }
-    renderZoneSelection(state.zones)
-    renderTreeSelection(state.trees)
+    saveData()
+    document.getElementById("zone-selection-form").innerHTML = null
+    document.getElementById("tree-selection-form").innerHTML = null
+    document.getElementById("tree-counts").innerHTML = null
 }
 
 const update = (target, op) => {

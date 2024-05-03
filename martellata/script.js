@@ -23,6 +23,10 @@ const initTreeCounts = (zone, trees) => {
 }
 
 const renderCounters = (tree) => {
+    if (!state.selectedZone) {
+        document.getElementById("tree-counts").innerHTML = null
+        return
+    }
     const treeCountSection = document.getElementById("tree-counts")
     treeCountSection.innerHTML = null
     treeCountSection.setAttribute("tree", tree)
@@ -95,6 +99,10 @@ const createStepper = (treeClassName, treeCount) => {
 }
 
 const renderZoneSelection = (zones) => {
+    if (!state.zones.length) {
+        document.getElementById("zone-selection-form").innerHTML = null
+        return
+    }
     const zoneSelection = document.getElementById("zone-selection-form")
     zoneSelection.innerHTML = zones.map(zone => `
     <label for="${zone}">
@@ -112,6 +120,10 @@ const renderZoneSelection = (zones) => {
 }
 
 const renderTreeSelection = (trees) => {
+    if (!state.selectedZone) {
+        document.getElementById("tree-selection-form").innerHTML = null
+        return
+    }
     const treeSelection = document.getElementById("tree-selection")
     const treeRadios = trees.map(tree => `
     <label for="${tree}">
@@ -150,7 +162,9 @@ const onZoneConfirm = (e) => {
         }
     }
     renderZoneSelection(state.zones)
-    input.value = null
+    renderTreeSelection(state.selectedTree)
+    renderCounters(state.selectedTree)
+    input.value = ""
     saveData()
 }
 

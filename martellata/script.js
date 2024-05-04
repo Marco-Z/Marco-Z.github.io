@@ -221,19 +221,29 @@ const exportData = () => {
     XLSX.utils.book_append_sheet(wb, notesSheet, "note")
 
     for (zone in state.treeCountsByZone) {
-        treeCountByClass = {}
+        let i = 0
+        treeCountByClass = {"totale": {}}
         for (tree in state.treeCountsByZone[zone]) {
             for (treeClass in state.treeCountsByZone[zone][tree]) {
                 treeCountByClass[treeClass] = treeCountByClass[treeClass] || {}
                 treeCountByClass[treeClass][tree] = state.treeCountsByZone[zone][tree][treeClass]
             }
         }
+        treeCountByClass["totale"][zone] = countZoneTotal(zone)
         data = []
         for (treeClass in treeCountByClass) {
             data.push({classe: treeClass, ...(treeCountByClass[treeClass])})
         }
         
         const ws = XLSX.utils.json_to_sheet(data)
+        const columns = "BCDEFGHIJKLMNOPQRSTUVWYYZ"
+        const row = CLASS_COUNT + 2
+        for (let i = 0; i < state.trees.length; i++) {
+            const col = columns[i]
+            const formula = `SUM(${col}1:${col}${row-1})`
+            XLSX.utils.sheet_set_array_formula(ws, `${col}${row}`, formula);
+        }
+        XLSX.utils.sheet_set_array_formula(ws, `${columns[state.trees.length]}${row}`, `SUM(${columns[0]}${row}:${columns[state.trees.length-1]}${row})`);
         XLSX.utils.book_append_sheet(wb, ws, zone)
     }
     XLSX.writeFile(wb,filename);

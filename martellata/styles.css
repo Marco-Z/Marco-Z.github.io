@@ -106,19 +106,40 @@
     display: none;
 }
 
-.name {
-    display: inline-block;
+.tree, .zone {
+    display: flex;
     width: 100%;
-    height: 40px;
-    line-height: 40px;
-    font-size: 22px;
-    text-align: center;
-    vertical-align: middle;
+    height: 65px;
     border-radius: 5px;
+    flex-direction: column;
 }
 
-input:checked ~ .name,
-.name.checked {
+.name {
+    line-height: 50px;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: -10px;
+}
+
+.count {
+    align-self: flex-end;
+    float: right;
+    margin-right: 5px;
+    color: #222;
+}
+
+input:checked ~ .tree,
+input:checked ~ .zone,
+.tree.checked
+.zone.checked {
     background-color: darkgreen;
     color: white;
+}
+
+input:checked ~ .tree > .count,
+input:checked ~ .zone > .count,
+.tree.checked > .count
+.zone.checked > .count {
+    color: lightgray;
 }

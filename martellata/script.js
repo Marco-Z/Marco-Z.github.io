@@ -86,6 +86,8 @@ const step = (target) => {
         const op = end-start < 400 ? "+" : "-"
         update(target, op)
         saveData()
+        updateTreeTotals()
+        updateZoneTotals()
     }
     target.onmouseup = target.ontouchend
 }
@@ -98,6 +100,28 @@ const createStepper = (treeClassName, treeCount) => {
     </button>`
 }
 
+const countTreeTotal = (zone, tree) => {
+    const treeCounts = state.treeCountsByZone[zone]
+    return Object.values(treeCounts[tree]).reduce((a,b) => a+b);
+}
+
+const countZoneTotal = (zone) => {
+    const treeCounts = state.treeCountsByZone[zone]
+    return Object.keys(treeCounts)
+        .map(tree => countTreeTotal(zone, tree))
+        .reduce((a,b) => a+b)
+}
+
+const updateZoneTotals = () => {
+    const totalElement = document
+        .getElementById(state.selectedZone)
+        .parentElement
+        .getElementsByClassName("count")[0]
+    const total = countZoneTotal(state.selectedZone)
+    console.log({totalElement, total});
+    totalElement.innerText = total
+}
+
 const renderZoneSelection = (zones) => {
     if (!state.zones.length) {
         document.getElementById("zone-selection-form").innerHTML = null
@@ -107,7 +131,10 @@ const renderZoneSelection = (zones) => {
     zoneSelection.innerHTML = zones.map(zone => `
     <label for="${zone}">
         <input type="radio" name="zones" id="${zone}" value="${zone}" class="hidden">
-        <span class="name">${zone}</span>
+        <span class="zone">
+            <span class="name">${zone}</span>
+            <div class="count">${countZoneTotal(zone)}</div>
+        </span>
     </label>
     `).join("")
 
@@ -119,6 +146,15 @@ const renderZoneSelection = (zones) => {
     document.getElementById(state.selectedZone).click()
 }
 
+const updateTreeTotals = () => {
+    const totalElement = document
+        .getElementById(state.selectedTree)
+        .parentElement
+        .getElementsByClassName("count")[0]
+    const total = countTreeTotal(state.selectedZone, state.selectedTree)
+    totalElement.innerText = total
+}
+
 const renderTreeSelection = (trees) => {
     if (!state.selectedZone) {
         document.getElementById("tree-selection-form").innerHTML = null
@@ -128,12 +164,15 @@ const renderTreeSelection = (trees) => {
     const treeRadios = trees.map(tree => `
     <label for="${tree}">
         <input type="radio" name="trees" id="${tree}" value="${tree}" class="hidden">
-        <span class="name">${tree}</span>
+        <span class="tree">
+            <div class="name">${tree}</div>
+            <div class="count">${countTreeTotal(state.selectedZone, tree)}</div>
+        </span>
     </label>
     `).join("")
 
     treeSelection.innerHTML = `
-    <form id="tree-selection-form" class="grid col-2">
+    <form id="tree-selection-form" class="grid col-3">
         ${treeRadios}
     </form>`
 

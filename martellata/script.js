@@ -118,7 +118,6 @@ const updateZoneTotals = () => {
         .parentElement
         .getElementsByClassName("count")[0]
     const total = countZoneTotal(state.selectedZone)
-    console.log({totalElement, total});
     totalElement.innerText = total
 }
 

@@ -80,7 +80,7 @@
 }
 
 .stepper {
-    padding: 5px;
+    padding: 5px 0px;
 }
 
 .class {
@@ -89,12 +89,6 @@
     text-align: center;
     vertical-align: middle;
     margin-top: 10px;
-}
-
-.count {
-    font-size: 20px;
-    line-height: 20px;
-    text-align: end;
 }
 
 #tree-selection,
@@ -123,10 +117,11 @@
 }
 
 .count {
-    align-self: flex-end;
-    float: right;
-    margin-right: 5px;
+    float: left;
+    margin-left: 5px;
     color: #222;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 input:checked ~ .tree,

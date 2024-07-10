@@ -55,6 +55,10 @@ const loadData = () => {
 }
 
 const resetData = () => {
+    const shouldDelete = confirm("Cancella tutto?");
+    if (!shouldDelete) {
+        return;
+    }
     state = {
         zones: [],
         trees: [...TREES],
